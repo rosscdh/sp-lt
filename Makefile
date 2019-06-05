@@ -32,4 +32,4 @@ push:
 	docker push ${REGISTRY}/${LATEST}
 
 run:
-	docker run -8089:8089 ${LATEST}
+	docker run -p 8089:8089 ${LATEST}
