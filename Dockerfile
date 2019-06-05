@@ -1,5 +1,5 @@
 FROM python:3-alpine
-RUN apk --update add alpine-sdk libxml2-dev
+RUN apk --update add build-base libzmq musl-dev python3 python3-dev zeromq-dev libxml2-dev libxslt-dev
 EXPOSE 8089
 
 ARG BUILD_COMMIT_SHA1
@@ -17,6 +17,8 @@ ENV BUILD_REPO_ORIGIN=$BUILD_REPO_ORIGIN
 WORKDIR /src
 ADD . /src
 RUN pip install pip -U;pip install -r requirements.txt
+
+RUN apk del build-base musl-dev python3-dev zeromq-dev
 
 ENTRYPOINT ["locust"]
 CMD ["-f", "saturation-load.py"]
