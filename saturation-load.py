@@ -1,3 +1,4 @@
+import os
 import random
 import requests
 
@@ -9,7 +10,7 @@ from urllib.parse import urljoin
 BASE_URL = 'https://hispryker.com'
 
 USER_CREDENTIALS = [
-    ('liju.rajan@mindcurv.com', 'change123')
+    (os.getenv('USER_EMAIL'), os.getenv('USER_PASS'))
 ]
 
 URLS = (
